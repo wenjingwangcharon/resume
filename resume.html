@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>王文静 · 个人主页</title>
+<style>
+  :root{
+    --bg:#ffffff;
+    --bg-soft:#f7f8fb;
+    --ink:#0f172a;
+    --ink-2:#475569;
+    --ink-3:#94a3b8;
+    --line:#e7e9f0;
+    --accent:#6366f1;
+    --accent-2:#8b5cf6;
+    --accent-soft:#eef0fe;
+    --radius:16px;
+    --shadow:0 4px 24px rgba(15,23,42,.06);
+    --shadow-hover:0 12px 36px rgba(99,102,241,.16);
+    --max:980px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+  /* ---------- Nav ---------- */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    backdrop-filter:saturate(180%) blur(12px);
+    background:rgba(255,255,255,.72);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{font-weight:700;letter-spacing:.5px;font-size:16px}
+  .brand span{background:linear-gradient(120deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .nav-links{display:flex;gap:28px;align-items:center;font-size:14px;color:var(--ink-2)}
+  .nav-links a{transition:color .2s;position:relative}
+  .nav-links a:hover{color:var(--accent)}
+  .nav-links .nav-pill{color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent-2));padding:6px 14px;border-radius:999px;font-weight:600;box-shadow:0 4px 12px rgba(99,102,241,.28)}
+  .nav-links .nav-pill:hover{color:#fff;transform:translateY(-1px);box-shadow:0 6px 16px rgba(99,102,241,.4)}
+  @media(max-width:640px){.nav-links{display:none}}
+
+  /* ---------- Hero ---------- */
+  header.hero{
+    padding:140px 0 80px;
+    background:
+      radial-gradient(1100px 480px at 85% -10%,rgba(139,92,246,.12),transparent 60%),
+      radial-gradient(900px 420px at 0% 0%,rgba(99,102,241,.12),transparent 55%);
+  }
+  .hero-grid{display:flex;gap:36px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+  .hero-action{flex:0 0 auto;display:flex;align-items:center;justify-content:flex-start}
+  @media(max-width:820px){.hero-action{flex-basis:100%;justify-content:center;margin-top:4px}}
+  .avatar{
+    height:208px;width:auto;flex:0 0 auto;max-width:56vw;
+    border-radius:18px;object-fit:contain;
+    background:transparent;
+    box-shadow:0 12px 30px rgba(99,102,241,.35);
+  }
+  /* ---------- Resume download ---------- */
+  .dl-btn{display:inline-flex;align-items:center;gap:12px;padding:18px 36px;border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;font-size:16px;font-weight:600;text-decoration:none;box-shadow:0 12px 28px rgba(99,102,241,.32);transition:transform .18s,box-shadow .18s;white-space:nowrap}
+  .dl-btn:hover{transform:translateY(-3px);box-shadow:0 18px 36px rgba(99,102,241,.42)}
+  .dl-btn svg{width:22px;height:22px}
+  @media(max-width:560px){.dl-btn{width:100%;justify-content:center}}
+  .hero-info{flex:1 1 360px;min-width:280px}
+  .hero-info h1{font-size:40px;line-height:1.2;letter-spacing:1px}
+  .hero-info .role{margin-top:10px;font-size:17px;color:var(--ink-2)}
+  .hero-info .role b{color:var(--accent);font-weight:600}
+  .tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+  .tag{font-size:13px;color:var(--ink-2);background:var(--bg-soft);border:1px solid var(--line);padding:5px 12px;border-radius:999px}
+  .contact{display:flex;gap:22px;flex-wrap:wrap;margin-top:22px;font-size:14px;color:var(--ink-2)}
+  .contact a{display:inline-flex;align-items:center;gap:7px;transition:color .2s}
+  .contact a:hover{color:var(--accent)}
+  .contact svg{width:16px;height:16px;opacity:.7}
+
+  /* ---------- Sections ---------- */
+  section{padding:64px 0}
+  section:nth-of-type(even){background:var(--bg-soft)}
+  .sec-head{display:flex;align-items:center;gap:12px;margin-bottom:36px}
+  .sec-head .bar{width:6px;height:26px;border-radius:4px;background:linear-gradient(var(--accent),var(--accent-2))}
+  .sec-head h2{font-size:24px;letter-spacing:.5px}
+  .sec-head .en{font-size:13px;color:var(--ink-3);letter-spacing:2px;text-transform:uppercase}
+
+  /* ---------- Education ---------- */
+  .edu-card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:24px 26px;box-shadow:var(--shadow);margin-bottom:18px;
+  }
+  .edu-top{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
+  .edu-top .sch{font-size:18px;font-weight:600}
+  .edu-top .period{font-size:13px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+  .edu-meta{color:var(--accent);font-size:14px;font-weight:500;margin-top:4px}
+  .edu-detail{margin-top:14px;display:flex;gap:28px;flex-wrap:wrap;font-size:14px;color:var(--ink-2)}
+  .edu-detail .col{flex:1;min-width:220px}
+  .edu-detail ul{list-style:none;margin-top:6px}
+  .edu-detail li{position:relative;padding-left:16px;margin:4px 0}
+  .edu-detail li::before{content:"";position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+
+  /* ---------- Experience timeline ---------- */
+  .timeline{position:relative;padding-left:30px}
+  .timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--accent),var(--accent-2));opacity:.35}
+  .exp{position:relative;margin-bottom:34px}
+  .exp::before{content:"";position:absolute;left:-30px;top:6px;width:16px;height:16px;border-radius:50%;background:#fff;border:3px solid var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+  .exp-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow);transition:transform .25s,box-shadow .25s}
+  .exp-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
+  .exp-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px}
+  .exp-co{font-size:19px;font-weight:700}
+  .exp-role{font-size:14px;color:var(--ink-2);margin-top:2px}
+  .exp-period{font-size:13px;color:var(--ink-3);white-space:nowrap;font-variant-numeric:tabular-nums}
+  .exp-list{margin-top:16px;display:flex;flex-direction:column;gap:14px}
+  .item .item-title{font-size:15px;font-weight:600;color:var(--ink)}
+  .item .item-title .dot{display:inline-block;width:7px;height:7px;border-radius:2px;background:var(--accent);margin-right:8px;transform:rotate(45deg)}
+  .item p{font-size:14px;color:var(--ink-2);margin-top:5px}
+  .item .sub{margin-top:12px;display:flex;flex-direction:column;gap:9px}
+  .item .sub .line{font-size:13.5px;color:var(--ink-2);line-height:1.75}
+  .item .sub .line .lab{display:inline-block;font-weight:600;color:var(--accent);margin-right:7px;flex:0 0 auto}
+  .item .sub .line .lab::after{content:"："}
+  .hl{color:var(--accent);font-weight:600}
+
+  /* ---------- Projects ---------- */
+  .proj{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 28px;box-shadow:var(--shadow);margin-bottom:22px;
+    transition:transform .25s,box-shadow .25s;
+  }
+  .proj:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
+  .proj-head{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px}
+  .proj-name{font-size:20px;font-weight:700;letter-spacing:.3px}
+  .proj-pos{font-size:13.5px;color:var(--ink-2);margin-top:5px}
+  .proj-pos b{color:var(--accent);font-weight:600}
+  .proj-badges{display:flex;gap:8px;flex-wrap:wrap}
+  .pb{font-size:12px;padding:4px 12px;border-radius:999px;font-weight:600;white-space:nowrap}
+  .pb.award{background:#fff7ed;color:#b45309;border:1px solid #fed7aa}
+  .pb.date{background:var(--accent-soft);color:var(--accent);border:1px solid #e0e3fd}
+  .star{margin-top:20px;display:flex;flex-direction:column;gap:14px}
+  .star .row{display:flex;gap:14px;align-items:flex-start}
+  .stag{flex:0 0 70px;text-align:center;font-size:12px;font-weight:700;color:#fff;
+        background:linear-gradient(135deg,var(--accent),var(--accent-2));
+        border-radius:10px;padding:7px 0;line-height:1.25;box-shadow:0 4px 12px rgba(99,102,241,.22)}
+  .stag b{display:block;font-size:16px;line-height:1}
+  .star .txt{font-size:14px;color:var(--ink-2);line-height:1.85;flex:1;padding-top:2px}
+  .star .txt ul{list-style:none;margin-top:6px;display:flex;flex-direction:column;gap:8px}
+  .star .txt li{position:relative;padding-left:16px}
+  .star .txt li::before{content:"";position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .subproj{margin-top:20px;padding-top:20px;border-top:1px dashed var(--line)}
+  .subproj .proj-name{font-size:17px}
+  @media(max-width:560px){.stag{flex-basis:54px;font-size:11px}.stag b{font-size:14px}}
+
+  /* ---------- Awards ---------- */
+  .awards-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  @media(max-width:680px){.awards-grid{grid-template-columns:1fr}}
+  .aw{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:7px;transition:transform .2s,box-shadow .2s}
+  .aw:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover)}
+  .aw-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .aw-name{font-size:15px;font-weight:600;line-height:1.4}
+  .aw-level{font-size:11px;font-weight:600;padding:3px 10px;border-radius:999px;white-space:nowrap;flex:0 0 auto}
+  .aw-level.school{background:var(--accent-soft);color:var(--accent);border:1px solid #e0e3fd}
+  .aw-level.college{background:#ecfdf5;color:#059669;border:1px solid #a7f3d0}
+  .aw-level.national{background:#fff7ed;color:#b45309;border:1px solid #fed7aa}
+  .aw-desc{font-size:13px;color:var(--ink-2);line-height:1.6}
+  .aw-date{font-size:12px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+
+  /* ---------- Skills ---------- */
+  .skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  @media(max-width:680px){.skills-grid{grid-template-columns:1fr}}
+  .skill-group{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow)}
+  .skill-group h4{font-size:15px;display:flex;align-items:center;gap:8px;margin-bottom:12px}
+  .skill-group h4 .ic{width:8px;height:8px;border-radius:50%;background:linear-gradient(var(--accent),var(--accent-2))}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:13px;background:var(--bg-soft);border:1px solid var(--line);color:var(--ink-2);padding:5px 12px;border-radius:999px;transition:.2s}
+  .chip:hover{border-color:var(--accent);color:var(--accent)}
+
+  /* ---------- Footer ---------- */
+  footer{padding:46px 0;text-align:center;color:var(--ink-3);font-size:13px;border-top:1px solid var(--line)}
+  footer a{color:var(--accent)}
+
+  /* ---------- Reveal animation ---------- */
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span>王文静</span></div>
+    <div class="nav-links">
+        <a href="#about">关于</a>
+        <a href="#edu">教育</a>
+        <a href="#exp">实习经历</a>
+        <a href="#proj">项目</a>
+        <a href="#comp">竞赛</a>
+        <a href="#skills">技能</a>
+        <a href="#awards">荣誉</a>
+        <a href="ai.html" class="nav-pill">AI 实践</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <img class="avatar" src="photo.jpg" alt="王文静">
+    <div class="hero-info">
+      <h1>王文静</h1>
+      <p class="role"><b>AI 产品实习生</b> · 南开大学本硕</p>
+      <div class="tags">
+        <span class="tag">AI 产品</span>
+        <span class="tag">用户增长</span>
+        <span class="tag">Agent / 工作流 / Skills</span>
+        <span class="tag">vibe coding</span>
+      </div>
+      <div class="contact">
+        <a href="tel:+8615235674907">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          (+86) 152-3567-4907
+        </a>
+        <a href="mailto:2450906146@qq.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+          2450906146@qq.com
+        </a>
+      </div>
+    </div>
+    <div class="hero-action">
+      <a class="dl-btn" href="resume.pdf" download="王文静-南开大学本硕-AI产品经理-27届.pdf">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        下载简历
+      </a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="bar"></span>
+      <h2>关于我</h2>
+      <span class="en">About</span>
+    </div>
+    <p style="font-size:15px;color:var(--ink-2);max-width:760px">
+      南开大学本硕，专注于 <b style="color:var(--ink)">AI 产品</b> 方向。具备从 0 到 1 的 AI 功能策划、竞品评测、用增活动设计与 Agent 工作流搭建经验，
+      实习覆盖腾讯、小红书、好未来、百度等一线互联网团队。擅长用数据驱动决策，并以 AI 工具链为杠杆提升产品与自身效率。
+    </p>
+  </div>
+</section>
+
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="bar"></span>
+      <h2>教育背景</h2>
+      <span class="en">Education</span>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-top">
+        <div class="sch">南开大学 · 经济学院</div>
+        <div class="period">2024.09 – 2027.06</div>
+      </div>
+      <div class="edu-meta">产业经济学 · 硕士（天津）</div>
+      <div class="edu-detail">
+        <div class="col">
+          <div style="font-size:13px;color:var(--ink-3);margin-bottom:4px">学业成绩</div>
+          <ul>
+            <li>初试总分 <span class="hl">450</span> 分（数三 148 / 英一 88）</li>
+            <li>初复试均位列专业第一</li>
+          </ul>
+        </div>
+        <div class="col">
+          <div style="font-size:13px;color:var(--ink-3);margin-bottom:4px">奖项荣誉</div>
+          <ul>
+            <li>南开大学公能奖学金（2024 + 2025 学年）</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-top">
+        <div class="sch">南开大学 · 经济学院</div>
+        <div class="period">2019.09 – 2023.06</div>
+      </div>
+      <div class="edu-meta">管理学 · 学士（天津）</div>
+      <div class="edu-detail">
+        <div class="col">
+          <div style="font-size:13px;color:var(--ink-3);margin-bottom:4px">学业成绩</div>
+          <ul>
+            <li>GPA <span class="hl">90.9</span>（专业 3 / 100）</li>
+            <li>主修：数据库(95) · 线代(100) · 概率统计(90) · 投资学(95)</li>
+          </ul>
+        </div>
+        <div class="col">
+          <div style="font-size:13px;color:var(--ink-3);margin-bottom:4px">奖项荣誉</div>
+          <ul>
+            <li>学业进步 / 学业优秀奖学金（2019 + 2020）</li>
+            <li>"寅峰-倚天"奖学金</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="bar"></span>
+      <h2>实习经历</h2>
+      <span class="en">Experience</span>
+    </div>
+
+    <div class="timeline">
+
+      <!-- 腾讯 -->
+      <div class="exp">
+        <div class="exp-card">
+          <div class="exp-head">
+            <div>
+              <div class="exp-co">腾讯</div>
+              <div class="exp-role">AI 产品实习生 · ima 产品组（用增方向）</div>
+            </div>
+            <div class="exp-period">2026.04 – 至今</div>
+          </div>
+          <div class="exp-list">
+            <div class="item">
+              <div class="item-title"><span class="dot"></span>知识号算力激励活动</div>
+              <div class="sub">
+                <div class="line"><span class="lab">背景</span>ima copilot 上线后，通过知识号算力激励活动，引导用户成为知识号主，并持续运营知识号。既可以丰富内容生态，又可以提高用户粘性，最终提高付费用户渗透率。</div>
+                <div class="line"><span class="lab">任务&动作</span>通过拆解知识号运营动作，并分析线上数据，设计了连贯且引导明确的任务路径和发放算力券的具体规则。随着 copilot 功能的完善（增加 skills、MCP 模块等）和内容生态的快速发展，不断优化任务和规则设计。活动已迭代至第三期，目前用户创建知识号、发布知识库、发布 skills 均有机会获得算力激励。</div>
+                <div class="line"><span class="lab">结果</span>功能上线一个月，共有 <span class="hl">2 万+</span> 用户参与，每日新增知识号数量增长约 <span class="hl">80%</span>，每日新增知识库数量增长 <span class="hl">130%+</span>，活动带动发布 skills 约 <span class="hl">4000</span> 个。</div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="item-title"><span class="dot"></span>引导用户下载双端系列功能</div>
+              <div class="sub">
+                <div class="line"><span class="lab">背景</span>研究发现多端用户更容易有知识生产和消费行为，通过多种激励方式引导用户下载双端，可以带来端新用户、提高用户留存、促进知识生态。Copilot 上线后，算力成为最有效的激励手段。</div>
+                <div class="line"><span class="lab">任务&动作</span>在原先下载双端送永久存储空间活动的基础上，增加下载双端送算力活动，引导用户下载最新版本双端 ima。</div>
+                <div class="line"><span class="lab">结果</span>下载双端送算力上线一周，累计拉新（uid 新）约 <span class="hl">500</span> 人，活动点击率约 <span class="hl">25%</span>，整体转化约 <span class="hl">15%</span>。</div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="item-title"><span class="dot"></span>"我与 COPILOT 的故事"运营活动</div>
+              <div class="sub">
+                <div class="line"><span class="lab">动作&结果</span>通过算力激励用户在社交平台发布经验帖。以 <span class="hl">1000 元</span> 左右的低成本带来 <span class="hl">50+</span> 小红书/公众号高质量宣传文章；用户经验也启发了后续的职业人群成长计划的方案设计；围绕投稿用户建立社群，引导他们作为体验用户给产品优化提供建议反馈。</div>
+                <div class="line"><span class="lab">AI 提效</span>方案设计、写问卷、出海报、写公众号文章、收集并处理数据、打分评价等全流程均由 AI 主力完成，整个活动轻量快速、易于复制。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 小红书 -->
+      <div class="exp">
+        <div class="exp-card">
+          <div class="exp-head">
+            <div>
+              <div class="exp-co">小红书</div>
+              <div class="exp-role">AI 产品实习生 · share&connect 产品组</div>
+            </div>
+            <div class="exp-period">2025.12 – 2026.04</div>
+          </div>
+          <div class="exp-list">
+            <div class="item">
+              <div class="item-title"><span class="dot"></span>AI P 图（小红书图片编辑页，支持输入指令进行 AI P 图）</div>
+              <div class="sub">
+                <div class="line"><span class="lab">效果优化</span>联合设计、算法团队制定提示词响应、一致性、真实感、美感四维评测标准，对比自研模型与 Seed、Nano Banana 等竞品模型表现，定期输出评测报告及优化方向，推动自研模型效果超越竞品并成功上线。</div>
+                <div class="line"><span class="lab">建立 SUG 词库</span>基于模型测评数据与线上用户使用数据，为不同创作场景设计专属 sug 词库，依据图片内容 + 用户编辑意图实现精准推荐，有效提升用户使用频次与功能体验，线上 case 中超 <span class="hl">50%</span> 使用了 sug 词。</div>
+                <div class="line"><span class="lab">测试集迭代</span>功能上线后，对 <span class="hl">6 万条</span> 用户使用数据开展 AI 打标工作（准确率超 <span class="hl">95%</span>），统计线上 case 分布并结合定性分析重构测试集，提升测试集与用户实际使用场景的匹配度，为算法团队明确后续模型优化方向。</div>
+                <div class="line"><span class="lab">功能优化</span>针对文字编辑效果不佳问题，短期联合算法设计并上线 rewrite 功能，将文字编辑合格率提升至 <span class="hl">50%</span> 以上；长期搭建专属测试集并接入端渲染能力，持续优化文字编辑效果。</div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="item-title"><span class="dot"></span>笔记质检站内信优化</div>
+              <div class="sub">
+                <div class="line"><span class="lab">背景</span>笔记质检异常后，发送给用户的站内信信息模糊、跳转不明确导致客诉多、修改少。在 CNY 期间资源紧缺的情况下，通过先修改跳转链接为异常笔记、再设计并上线落地页的两步方案，实现客诉降低 <span class="hl">50%</span>。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 好未来 -->
+      <div class="exp">
+        <div class="exp-card">
+          <div class="exp-head">
+            <div>
+              <div class="exp-co">好未来</div>
+              <div class="exp-role">AI 产品实习生 · 互联网产研组</div>
+            </div>
+            <div class="exp-period">2025.10 – 2025.12</div>
+          </div>
+          <div class="exp-list">
+            <div class="item">
+              <div class="item-title"><span class="dot"></span>一致性生图模型更换为 Nano Banana</div>
+              <div class="sub">
+                <div class="line"><span class="lab">模型评测</span>Nano banana 模型更新后，立即进行模型对比测评。通过过往文档、用户访谈、数据分析总结测试集，明确评价指标，对比新模型与现有模型即梦 4.0，发现新模型效果更优，因此提需将模型更换。</div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="item-title"><span class="dot"></span>对口型视频生成功能</div>
+              <div class="sub">
+                <div class="line"><span class="lab">背景</span>产品现有能力支持文/图生视频，但是不能指定音频/说话内容，不满足设计制作视频的需要。</div>
+                <div class="line"><span class="lab">任务&动作</span>根据用户需求选择数字人模型作为解决方案，对比测评即梦、混元、科大讯飞等多种数字人模型，根据模型能力、生成效果、生成速度等多维度测评结果选定即梦数字人模型，根据用户工作链路设计产品 demo，产出 PRD 并参与评审，跟踪开发、测试，直到最终功能上线。</div>
+                <div class="line"><span class="lab">结果</span>功能上线后一周，渗透率（使用人数/视频生成功能总使用人数）超过 <span class="hl">20%</span>，用户均表示满足需求。</div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="item-title"><span class="dot"></span>超级教研 Agent</div>
+              <div class="sub">
+                <div class="line"><span class="lab">业务分析与拆解</span>通过访谈教研老师总结教研的工作流程，通过分析教研产出总结产出物结构、产出标准。探索 AI 可介入的工作阶段和可完成的工作内容，据此设计 agent 框架。</div>
+                <div class="line"><span class="lab">工作流搭建</span>使用 Dify 独立负责部分模块的工作流搭建，通过 prompt 工程、知识库建设等方式提高工作流效果。目前，超级教研 agent 可完成大阅读课教研材料、课设文本的制作。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 百度 -->
+      <div class="exp">
+        <div class="exp-card">
+          <div class="exp-head">
+            <div>
+              <div class="exp-co">百度</div>
+              <div class="exp-role">AI 战略分析实习生 · 搜索与信息分发战略组</div>
+            </div>
+            <div class="exp-period">2025.07 – 2025.10</div>
+          </div>
+          <div class="exp-list">
+            <div class="item">
+              <div class="item-title"><span class="dot"></span>AI 产品追踪</div>
+              <div class="sub">
+                <div class="line"><span class="lab">搜集整合信息</span>通过官方渠道和科技 KOL 关注 AI 产品的功能更新及运营热点，重点新闻组内推送并进行专题研究。</div>
+                <div class="line"><span class="lab">竞品分析｜用增策略</span>开学季重点追踪投放动态，结合前期功能更新，发现元宝在腾讯视频、腾讯会议开设引流入口，端内打通京东、腾讯会议、腾讯视频、QQ 音乐等腾讯系软件，提炼其 APP 引流 + 生态打通的核心用增策略。</div>
+                <div class="line"><span class="lab">数据归因</span>跟踪互联网 APP 的月度、季度数据，结合产品功能更新与运营活动，完成归因分析。</div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="item-title"><span class="dot"></span>AI 视频报告</div>
+              <div class="sub">
+                <div class="line"><span class="lab">竞品｜AI 内容分析</span>爬取国内多平台与 TikTok 代表性 AI 视频，通过供给、反馈的多指标定量分析确定重点类别，结合爆款 case 定性分析其内容特征。对比国内外差异，提出百度 AI 视频切入点为<span class="hl">仿真视频</span>和<span class="hl">人文社科类</span>。</div>
+                <div class="line"><span class="lab">用户｜创作者调研</span>通过消费-生产二维指标区分各类视频的创作特征，针对性采访创作者，调研其生产流程、工具选用与创作痛点，发现 AI 生视频主要问题为指令理解、角色一致性、物理遵循等，为产品优化及运营提供建议。</div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="item-title"><span class="dot"></span>AI 产品调研</div>
+              <div class="sub">
+                <div class="line"><span class="lab">秒哒｜竞品对比</span>对内部产品秒哒的 H5、站点等七大核心功能，与美团 nocode、Lovable 等竞品从成本、时长、效果多维度对比，发现其在 H5、小工具、轻应用领域的优势及免费额度多、生成时间长的特点，供产品发展参考。</div>
+                <div class="line"><span class="lab">AI 抖音｜功能调研</span>测试新 APP 功能，覆盖功能模块、使用流程、重点的搜索功能的多模能力、结果呈现样式等方面，验证功能完整性与用户体验合理性，了解竞对公司产品发展战略。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="proj">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="bar"></span>
+      <h2>项目经历</h2>
+      <span class="en">Project</span>
+    </div>
+    <!-- 项目 1：作文 COACH -->
+    <div class="proj">
+      <div class="proj-head">
+        <div>
+          <div class="proj-name">作文 COACH</div>
+          <div class="proj-pos">项目定位：<b>高中生作文备考 AI 素材神器</b></div>
+        </div>
+        <div class="proj-badges">
+          <span class="pb award">🏆 好未来黑客松比赛三等奖</span>
+        </div>
+      </div>
+      <div class="star">
+        <div class="row"><span class="stag"><b>S</b>背景</span><div class="txt">瞄准高中生作文备考核心痛点，针对学生素材输入杂乱难沉淀、检索效率低下、素材转化应用困难三大问题，打造专属 AI 辅助工具，破解作文备考"积累难、检索慢、不会用"的行业难题，填补高中生作文素材精细化管理与 AI 辅导的市场空白。</div></div>
+        <div class="row"><span class="stag"><b>T</b>任务</span><div class="txt">牵头完成产品需求调研、功能架构设计与技术落地统筹，主导 AI 功能模块开发，实现素材全流程自动化管理与深度学习辅导，打造从素材收集、分类沉淀到仿写运用的闭环体系，最终冲刺黑客松比赛并斩获奖项。</div></div>
+        <div class="row"><span class="stag"><b>A</b>行动</span><div class="txt"><ul>
+          <li><b>技术落地：</b>搭建多源素材采集体系，集成高精度 OCR 与智能解析引擎，实现 PDF、图片、公众号文章等多入口素材自动识别、分类打标签，解决素材杂乱无序问题。</li>
+          <li><b>功能优化：</b>设计沉浸式多维筛选素材库，优化检索逻辑，将素材检索效率提升 <span class="hl">10 倍</span>；创新卡片式素材展示模式，搭配左文右伴学习界面，提升用户使用体验。</li>
+          <li><b>AI 赋能：</b>研发 AI 私教辅导模块，搭载自由对话、深度解析、仿写指导三大模式，支持上下文记忆功能，打通素材理解到写作运用的转化链路，实现"读懂素材"到"灵活写作"的跨越。</li>
+          <li><b>项目攻坚：</b>协调团队完成产品迭代、功能测试与演示打磨，梳理项目核心亮点与优势，备战黑客松比赛，全程把控项目进度与成果输出。</li>
+        </ul></div></div>
+        <div class="row"><span class="stag"><b>R</b>成果</span><div class="txt"><ul>
+          <li>产品成功落地，完整解决高中生作文备考三大核心痛点，构建素材收集-管理-学习-运用全流程解决方案；</li>
+          <li>凭借创新产品设计与 AI 技术应用，从众多参赛项目中脱颖而出，荣获好未来黑客松比赛三等奖，获得评委与行业认可。</li>
+        </ul></div></div>
+      </div>
+    </div>
+
+    <!-- 项目 2：OLIST 电商数据分析报告 -->
+    <div class="proj">
+      <div class="proj-head">
+        <div>
+          <div class="proj-name">OLIST 电商数据分析报告</div>
+          <div class="proj-pos">全流程数据治理与商业分析</div>
+        </div>
+      </div>
+      <div class="star">
+        <div class="row"><span class="stag"><b>S</b>背景</span><div class="txt">针对电商订单、商品、用户评论等多表数据质量混乱、指标口径不统一、业务问题无法有效定位的问题，开展全流程数据治理与商业分析，为业务决策提供数据支撑。</div></div>
+        <div class="row"><span class="stag"><b>T</b>任务</span><div class="txt">完成数据清洗与标准化处理，搭建核心指标体系，定位业务瓶颈，并输出可落地的优化解决方案。</div></div>
+        <div class="row"><span class="stag"><b>A</b>行动</span><div class="txt"><ul>
+          <li><b>数据处理：</b>对 5 张核心表开展缺失值、重复值、异常值探查，完成时间字段补全、异常修正、重复去重，建立业务逻辑校验规则，形成高质量数据集。</li>
+          <li><b>指标构建：</b>围绕电商"下单 — 审核 — 履约 — 交付 — 评价"的交易全链路，搭建规模、效率、转化、体验四维指标体系，计算 GMV、有效订单量、成交率、履约时长、用户满意度等核心指标。</li>
+          <li><b>问题发现：</b>定位出有效成交率偏低、订单履约延迟、时间逻辑异常、商品信息缺失、用户评价数据质量差等关键问题。</li>
+          <li><b>解决方案：</b>优化订单审核与履约流程，规范订单状态管理，完善商品信息与评价收集机制，建立日常数据巡检体系。</li>
+        </ul></div></div>
+        <div class="row"><span class="stag"><b>R</b>成果</span><div class="txt">数据可用性大幅提升，形成可复用的指标体系与分析模板，精准定位业务瓶颈并输出落地方案，为运营优化与 GMV 增长提供数据支持。</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="comp">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="bar"></span>
+      <h2>竞赛经历</h2>
+      <span class="en">Competitions</span>
+    </div>
+
+    <!-- 竞赛 1：IMA 管理会计案例大赛 -->
+    <div class="proj">
+      <div class="proj-head">
+        <div class="proj-name">IMA 管理会计案例大赛</div>
+        <div class="proj-badges">
+          <span class="pb award">华北赛区二等奖</span>
+          <span class="pb date">2022.04 – 2022.10</span>
+        </div>
+      </div>
+      <div class="star">
+        <div class="row"><span class="stag"><b>S</b>背景</span><div class="txt">儿童玩具 ODM 厂商大促期需求激增 <span class="hl">130%</span>、退货率高达 10%，原有库存策略难以匹配高波动场景。</div></div>
+        <div class="row"><span class="stag"><b>T</b>任务</span><div class="txt">在成本约束下优化高波动场景的库存策略，平衡缺货与囤货风险。</div></div>
+        <div class="row"><span class="stag"><b>A</b>行动</span><div class="txt">综合紧急订货/缺货成本、储存成本与销售状况进行建模分析。</div></div>
+        <div class="row"><span class="stag"><b>R</b>成果</span><div class="txt">得出淡季 EOQ <span class="hl">260</span> 件、旺季逐月预测、并设置安全库存 <span class="hl">200</span> 件的优化方案，实现总成本降低；获华北赛区二等奖。</div></div>
+      </div>
+    </div>
+
+    <!-- 竞赛 2：尖烽时刻商业模拟赛 -->
+    <div class="proj">
+      <div class="proj-head">
+        <div class="proj-name">"尖烽时刻"商业模拟赛</div>
+        <div class="proj-badges">
+          <span class="pb date">2022.04 – 2022.05</span>
+        </div>
+      </div>
+      <div class="star">
+        <div class="row"><span class="stag"><b>S</b>背景</span><div class="txt">饮料市场竞争激烈，需实时掌握竞品动向以制定差异化竞争战略并支撑生产决策。</div></div>
+        <div class="row"><span class="stag"><b>T</b>任务</span><div class="txt">建立动态竞争情报体系，驱动产品组合战略与需求驱动型生产决策。</div></div>
+        <div class="row"><span class="stag"><b>A</b>行动</span><div class="txt"><ul>
+          <li><b>动态竞争情报系统搭建：</b>主导建立饮料市场竞品监测机制，实时追踪对手定价策略、产品参数调整，构建属性对标雷达图定位自身产品组合在包装、定价、销售渠道维度的差异化机会。</li>
+          <li><b>需求驱动型生产决策：</b>整合历史销售面板数据及竞争对手历史策略，构建销量预测模型支撑生产排期。</li>
+        </ul></div></div>
+        <div class="row"><span class="stag"><b>R</b>成果</span><div class="txt">驱动"高溢价功能饮料 + 平价水"双主线战略；关键产品预测准确率支撑公司股价上涨 <span class="hl">170%</span>。</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="bar"></span>
+      <h2>技能与兴趣</h2>
+      <span class="en">Skills</span>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h4><span class="ic"></span>AI 工具链</h4>
+        <div class="chips">
+          <span class="chip">Cursor</span><span class="chip">Trae</span><span class="chip">WorkBuddy</span><span class="chip">扣子 Coze</span><span class="chip">IMA</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4><span class="ic"></span>模型与产品理解</h4>
+        <div class="chips">
+          <span class="chip">ChatGPT</span><span class="chip">混元</span><span class="chip">DeepSeek</span><span class="chip">可灵</span><span class="chip">即梦</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4><span class="ic"></span>Agent / 工作流 / Skills</h4>
+        <div class="chips">
+          <span class="chip">Coze</span><span class="chip">Dify</span><span class="chip">RAG</span><span class="chip">工作流编排</span><span class="chip">vibe coding</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4><span class="ic"></span>产品设计与原型</h4>
+        <div class="chips">
+          <span class="chip">Axure</span><span class="chip">Figma</span><span class="chip">Xmind</span><span class="chip">PRD</span><span class="chip">流程图</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4><span class="ic"></span>数据处理</h4>
+        <div class="chips">
+          <span class="chip">Excel</span><span class="chip">SQL</span><span class="chip">Stata</span><span class="chip">SPSS</span><span class="chip">Python</span><span class="chip">pandas</span><span class="chip">numpy</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4><span class="ic"></span>其他</h4>
+        <div class="chips">
+          <span class="chip">CET-6（528）</span><span class="chip">PPT</span><span class="chip">PS</span><span class="chip">公众号编辑</span><span class="chip">秀米</span><span class="chip">剪映</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="awards">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="bar"></span>
+      <h2>奖励与荣誉</h2>
+      <span class="en">Awards</span>
+    </div>
+    <div class="awards-grid">
+      <div class="aw">
+        <div class="aw-top"><div class="aw-name">公能奖学金</div><span class="aw-level school">校级</span></div>
+        <div class="aw-desc">校级奖学金，表彰综合表现突出的学生。</div>
+        <div class="aw-date">2025 年 10 月</div>
+      </div>
+      <div class="aw">
+        <div class="aw-top"><div class="aw-name">公能奖学金</div><span class="aw-level school">校级</span></div>
+        <div class="aw-desc">校级奖学金，表彰综合表现突出的学生。</div>
+        <div class="aw-date">2024 年 10 月</div>
+      </div>
+      <div class="aw">
+        <div class="aw-top"><div class="aw-name">寅峰-倚天奖学金</div><span class="aw-level college">院级学业奖</span></div>
+        <div class="aw-desc">院级学业奖学金，用于奖励学业成绩优异的学生。</div>
+        <div class="aw-date">2022 年 11 月</div>
+      </div>
+      <div class="aw">
+        <div class="aw-top"><div class="aw-name">IMA 校园管理会计案例大赛华北二等奖</div><span class="aw-level national">国家级</span></div>
+        <div class="aw-desc">国家级科研竞赛类奖项，在华北区域案例分析与团队协作中表现突出，获二等奖。</div>
+        <div class="aw-date">2022 年 3 月</div>
+      </div>
+      <div class="aw">
+        <div class="aw-top"><div class="aw-name">学业优秀奖学金</div><span class="aw-level college">院级学业奖</span></div>
+        <div class="aw-desc">院级学业奖学金，表彰学业成绩优秀的学生。</div>
+        <div class="aw-date">2021 年 10 月</div>
+      </div>
+      <div class="aw">
+        <div class="aw-top"><div class="aw-name">学业进步奖学金</div><span class="aw-level college">院级学业奖</span></div>
+        <div class="aw-desc">院级学业奖学金，用于奖励学业进步显著的学生。</div>
+        <div class="aw-date">2021 年 10 月</div>
+      </div>
+      <div class="aw">
+        <div class="aw-top"><div class="aw-name">学业进步奖学金</div><span class="aw-level college">院级学业奖</span></div>
+        <div class="aw-desc">院级学业奖学金，用于奖励学业进步显著的学生。</div>
+        <div class="aw-date">2020 年 10 月</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    © 2026 王文静 · 南开大学本硕 &nbsp;|&nbsp;
+    <a href="mailto:2450906146@qq.com">2450906146@qq.com</a>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
