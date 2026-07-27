@@ -96,22 +96,25 @@
   .arrow{position:absolute;right:12px;top:12px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:14px;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.12)}
 
   /* --- project card (info top + buttons bottom-right) --- */
-  .project-card{display:flex;flex-direction:column;justify-content:space-between;align-items:stretch;padding:24px 20px 18px;background:#fff;min-height:220px;position:relative}
+  .project-card{display:flex;flex-direction:column;justify-content:space-between;align-items:stretch;padding:24px 20px 20px;background:#fff;min-height:240px;position:relative}
   .project-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:var(--radius) var(--radius) 0 0}
   .project-time{position:absolute;top:14px;right:16px;font-size:12px;font-weight:600;color:var(--accent);background:var(--accent-soft);padding:3px 10px;border-radius:999px;letter-spacing:.02em}
-  #s2 .project-time{position:static;display:block;text-align:right;margin-bottom:10px;width:fit-content;margin-left:auto}
+  #s2 .project-time{position:absolute;top:14px;right:16px}
+  #s2 .project-info .card-title{padding-right:0}
+  .title-sub{font-size:18px;font-weight:500;color:var(--ink-2);letter-spacing:.2px}
   .project-info .card-title{font-size:18px;font-weight:700;color:var(--ink);line-height:1.4;margin-bottom:6px}
   .project-info .card-sub{font-size:13.5px;color:var(--ink-2);line-height:1.55}
-  .project-buttons{display:flex;justify-content:flex-end;gap:10px;margin-top:16px}
-  #s1 .cards{grid-template-columns:1fr 1fr 1.28fr}
+  .project-buttons{display:flex;justify-content:flex-end;gap:10px;margin-top:auto;padding-top:16px}
+  #s1 .cards{grid-template-columns:1fr 1.28fr 1fr}
 
   /* ---------- Skill cards (horizontal) ---------- */
   #s3 .cards{grid-template-columns:1fr;gap:16px}
+  #s4 .cards{grid-template-columns:repeat(2,1fr)}
   .skill-card{
     display:grid;grid-template-columns:76px 1fr;column-gap:20px;row-gap:16px;
     background:#fff;border:1px solid var(--line);
     border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow);
-    transition:transform .2s,box-shadow .2s;
+    transition:transform .2s,box-shadow .2s;position:relative;
   }
   .skill-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
   .skill-icon{
@@ -153,6 +156,12 @@
   .reveal{transition:opacity .6s,transform .6s}
   .js .reveal{opacity:0;transform:translateY(18px)}
   .js .reveal.in{opacity:1;transform:none}
+  /* ---------- Toast ---------- */
+  .toast{position:fixed;bottom:40px;left:50%;transform:translateX(-50%);z-index:9999;
+    background:var(--ink);color:#fff;padding:12px 28px;border-radius:10px;font-size:14px;
+    font-weight:600;letter-spacing:.3px;box-shadow:0 8px 24px rgba(0,0,0,.2);
+    opacity:0;pointer-events:none;transition:opacity .3s,transform .3s}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(-6px)}
   </style>
  </head>
  <body>
@@ -178,9 +187,6 @@
      </a>
      <a href="#s4">
       工作流
-     </a>
-     <a href="#s5">
-      prompt
      </a>
     </div>
    </div>
@@ -233,7 +239,7 @@
        <span class="project-time">2026.7</span>
        <div class="project-info">
         <div class="card-title">
-         💼 OfferBuddy<br>秋招面试追踪 AI 助手
+         💼 OfferBuddy<br><span class="title-sub">秋招面试追踪 AI 助手</span>
         </div>
         <div class="card-sub">
          AI 驱动的秋招全流程管理——从投递追踪到面试复盘，一站式搞定。
@@ -259,31 +265,10 @@
      </div>
      <div class="card">
       <div class="project-card">
-       <span class="project-time">2025.11</span>
-       <div class="project-info">
-        <div class="card-title">
-         ✍️ 作文Coach<br>学生作文素材的智能协作工具
-        </div>
-        <div class="card-sub">
-         针对高中生作文"素材碎片化、不会用"的痛点，AI 贯穿「素材采集 → 智能分析 → 辅助写作」全链路。
-        </div>
-       </div>
-       <div class="project-buttons">
-        <a class="skill-btn secondary" href="#" title="查看演示视频" target="_blank" rel="noopener">
-         <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M8 5v14l11-7z" />
-         </svg>
-         演示视频
-        </a>
-       </div>
-      </div>
-     </div>
-     <div class="card">
-      <div class="project-card">
        <span class="project-time">2026.7</span>
        <div class="project-info">
         <div class="card-title">
-         📰 AI 新闻日报生成器
+         📰 Daily AI-News<br><span class="title-sub">AI 新闻日报生成器</span>
         </div>
         <div class="card-sub">
          自动聚合 AI 科技资讯，生成可交互日报网页，支持定时更新与一键托管到 GitHub Pages。
@@ -308,6 +293,27 @@
        </div>
       </div>
      </div>
+     <div class="card">
+      <div class="project-card">
+       <span class="project-time">2025.11</span>
+       <div class="project-info">
+        <div class="card-title">
+         ✍️ 作文Coach<br><span class="title-sub">高中生写作的智能写作工具</span>
+        </div>
+        <div class="card-sub">
+         针对高中生作文"素材碎片化、不会用"的痛点，AI 贯穿「素材采集 → 智能分析 → 辅助写作」全链路。
+        </div>
+       </div>
+       <div class="project-buttons">
+        <a class="skill-btn secondary" href="https://b23.tv/RjQ3N6R" title="查看演示视频" target="_blank" rel="noopener">
+         <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M8 5v14l11-7z" />
+         </svg>
+         演示视频
+        </a>
+       </div>
+      </div>
+     </div>
     </div>
    </section>
   <section class="stage reveal" id="s2">
@@ -327,10 +333,10 @@
     <div class="cards">
      <div class="card">
       <div class="project-card">
+       <span class="project-time">2026.6</span>
        <div class="project-info">
-        <span class="project-time">2026.6</span>
         <div class="card-title">
-         📣 「我与copilot的故事」系列征稿运营活动
+         📣 运营活动提效<br><span class="title-sub">「我与copilot的故事」系列</span>
         </div>
         <div class="card-sub">
          用 AI 贯穿海报、规则、文章、数据处理全链路——把活动运营效率拉满。
@@ -348,10 +354,10 @@
      </div>
      <div class="card">
       <div class="project-card">
+       <span class="project-time">2026.6</span>
        <div class="project-info">
-        <span class="project-time">2026.6</span>
         <div class="card-title">
-         ⚡ 数据处理自动化 Skills
+         ⚡ 数据分析提效<br><span class="title-sub">周报自动化skills</span>
         </div>
         <div class="card-sub">
          看板+数据库取数——数据处理——图表，一条命令跑通全链路。
@@ -385,6 +391,7 @@
     </div>
     <div class="cards">
      <div class="skill-card">
+      <span class="project-time">2026.4</span>
       <div class="skill-icon">
        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <rect x="3" y="5" width="18" height="14" rx="2" />
@@ -428,6 +435,7 @@
       </div>
      </div>
      <div class="skill-card">
+      <span class="project-time">2026.4</span>
       <div class="skill-icon">
        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="12" cy="12" r="9" />
@@ -472,6 +480,7 @@
       </div>
      </div>
      <div class="skill-card">
+      <span class="project-time">2026.4</span>
       <div class="skill-icon">
        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <rect x="9" y="3" width="6" height="11" rx="3" />
@@ -516,6 +525,7 @@
       </div>
      </div>
      <div class="skill-card">
+      <span class="project-time">2026.5</span>
       <div class="skill-icon">
        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <line x1="12" y1="2" x2="12" y2="7" />
@@ -561,6 +571,7 @@
       </div>
      </div>
      <div class="skill-card">
+      <span class="project-time">2026.6</span>
       <div class="skill-icon">
        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="12" cy="12" r="10" />
@@ -621,92 +632,194 @@
      </div>
     </div>
     <div class="cards">
-     <a class="card" href="#" rel="noopener" target="_blank">
-      <div class="thumb link">
-       <span class="ph">
-        【占位】链接封面
-       </span>
-       <div class="thumb-info">
-        <div class="card-title">
-         【占位】工作流作品
-        </div>
-        <div class="card-sub">
-         例如你用 Dify 搭的「超级教研 Agent」工作流模块。
-        </div>
-       </div>
-       <span class="arrow">
-        ↗
-       </span>
+     <div class="skill-card">
+      <span class="project-time">2026.4</span>
+      <div class="skill-icon">
+       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="5" width="18" height="14" rx="2" />
+        <polyline points="3 7 12 13 21 7" />
+       </svg>
       </div>
-     </a>
-     <a class="card" href="#" rel="noopener" target="_blank">
-      <div class="thumb text">
-       <span class="ph">
-        【占位】图片/封面
-       </span>
-       <div class="thumb-info">
-        <div class="card-title">
-         【占位】工作流拆解
-        </div>
-        <div class="card-sub">
-         用一张流程图说明工作流的节点设计与输入输出。
-        </div>
+      <div class="skill-body">
+       <div class="skill-cn">
+        面试邮件整理
+       </div>
+       <div class="skill-en">
+        email-interview-workflow
+       </div>
+       <div class="skill-desc">
+        从邮箱拉取邮件列表，自动识别面试相关邮件，按内容类型分类（日程 / 任务 / 信息），一键创建飞书日历事件与任务。
        </div>
       </div>
-     </a>
-    </div>
-   </section>
-   <section class="stage reveal" id="s5">
-    <div class="stage-head">
-     <div class="stage-num">
-      05
-     </div>
-     <div class="stage-txt">
-      <div class="stage-name">
-       prompt
-      </div>
-      <div class="stage-desc">
-       从"会问"到"问得好"——沉淀 Prompt 模板与调优心得，把模型能力稳定发挥出来。
+      <div class="skill-actions">
+       <a class="skill-btn secondary" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+         <path d="M8 5v14l11-7z" />
+        </svg>
+        演示视频
+       </a>
+       <a class="skill-btn ghost" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+         <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+         <polyline points="15 3 21 3 21 9" />
+         <line x1="10" y1="14" x2="21" y2="3" />
+        </svg>
+        体验链接
+       </a>
       </div>
      </div>
-    </div>
-    <div class="cards">
-     <a class="card" href="#" rel="noopener" target="_blank">
-      <div class="thumb text">
-       <span class="ph">
-        【占位】图片/封面
-       </span>
-       <div class="thumb-info">
-        <div class="card-title">
-         【占位】Prompt 模板 / 调优心得
-        </div>
-        <div class="card-sub">
-         放一个你常用的 Prompt 框架或调优前后对比。
-        </div>
+     <div class="skill-card">
+      <span class="project-time">2025.8</span>
+      <div class="skill-icon">
+       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="9" y="3" width="6" height="11" rx="3" />
+        <path d="M5 11a7 7 0 0 0 14 0" />
+        <line x1="12" y1="18" x2="12" y2="22" />
+       </svg>
+      </div>
+      <div class="skill-body">
+       <div class="skill-cn">
+        面试录音整理
+       </div>
+       <div class="skill-en">
+        interview-recording-workflow
+       </div>
+       <div class="skill-desc">
+        读取面试录音转写文本，先结构化提取问答（过滤语气词、补全缺失问题），再做术语校对修正语音识别错别字，输出编号问答格式。
        </div>
       </div>
-     </a>
-     <a class="card" href="#" rel="noopener" target="_blank">
-      <div class="thumb link">
-       <span class="ph">
-        【占位】链接封面
-       </span>
-       <div class="thumb-info">
-        <div class="card-title">
-         【占位】Prompt 分享文章
-        </div>
-        <div class="card-sub">
-         如果你写过相关分享，放外链。
-        </div>
-       </div>
-       <span class="arrow">
-        ↗
-       </span>
+      <div class="skill-actions">
+       <a class="skill-btn secondary" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+         <path d="M8 5v14l11-7z" />
+        </svg>
+        演示视频
+       </a>
+       <a class="skill-btn ghost" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+         <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+         <polyline points="15 3 21 3 21 9" />
+         <line x1="10" y1="14" x2="21" y2="3" />
+        </svg>
+        体验链接
+       </a>
       </div>
-     </a>
+     </div>
+     <div class="skill-card">
+      <span class="project-time">2025.8</span>
+      <div class="skill-icon">
+       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+        <polyline points="14 2 14 8 20 8" />
+        <line x1="16" y1="13" x2="8" y2="13" />
+        <line x1="16" y1="17" x2="8" y2="17" />
+        <polyline points="10 9 9 9 8 9" />
+       </svg>
+      </div>
+      <div class="skill-body">
+       <div class="skill-cn">
+        面试复盘
+       </div>
+       <div class="skill-en">
+        interview-review-workflow
+       </div>
+       <div class="skill-desc">
+        获取岗位 JD 后自动按面试类型（简历面 / 行为面 / 技术面 / 业务面 / 基本情况）分维度复盘。支持分析自己的面经和别人分享的面经两种输入模式，结合知识库检索增强分析质量，最终整合图文输出结构化复盘报告。
+       </div>
+      </div>
+      <div class="skill-actions">
+       <a class="skill-btn secondary" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+         <path d="M8 5v14l11-7z" />
+        </svg>
+        演示视频
+       </a>
+       <a class="skill-btn ghost" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+         <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+         <polyline points="15 3 21 3 21 9" />
+         <line x1="10" y1="14" x2="21" y2="3" />
+        </svg>
+        体验链接
+       </a>
+      </div>
+     </div>
+     <div class="skill-card">
+      <span class="project-time">2025.8</span>
+      <div class="skill-icon">
+       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+       </svg>
+      </div>
+      <div class="skill-body">
+       <div class="skill-cn">
+        AI新闻数据采集
+       </div>
+       <div class="skill-en">
+        ai-news-collector-workflow
+       </div>
+       <div class="skill-desc">
+        自动采集 36氪、新智元、量子位、AI科技评论等多个公众号最新推文，LinkReader 读取原文后批量生成摘要、分类与合并输出。Daily AI-News 的底层数据引擎，覆盖 5 个主流 AI 信息源。
+       </div>
+      </div>
+      <div class="skill-actions">
+       <a class="skill-btn secondary" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+         <path d="M8 5v14l11-7z" />
+        </svg>
+        演示视频
+       </a>
+       <a class="skill-btn ghost" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+         <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+         <polyline points="15 3 21 3 21 9" />
+         <line x1="10" y1="14" x2="21" y2="3" />
+        </svg>
+        体验链接
+       </a>
+      </div>
+     </div>
+     <div class="skill-card">
+      <span class="project-time">2025.8</span>
+      <div class="skill-icon">
+       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="23 7 16 12 23 17 23 7" />
+        <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+       </svg>
+      </div>
+      <div class="skill-body">
+       <div class="skill-cn">
+        多媒体内容整理
+       </div>
+       <div class="skill-en">
+        media-content-organizer-workflow
+       </div>
+       <div class="skill-desc">
+        支持 B站视频（获取 AI 字幕 → 大模型结构化）和小红书笔记（批量导入 → 大模型整理）两种渠道，将非结构化多媒体内容自动转为可检索的文本。
+       </div>
+      </div>
+      <div class="skill-actions">
+       <a class="skill-btn secondary" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+         <path d="M8 5v14l11-7z" />
+        </svg>
+        演示视频
+       </a>
+       <a class="skill-btn ghost" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+         <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+         <polyline points="15 3 21 3 21 9" />
+         <line x1="10" y1="14" x2="21" y2="3" />
+        </svg>
+        体验链接
+       </a>
+      </div>
+     </div>
     </div>
    </section>
-   </main>
+  </main>
   <footer>
    <div class="wrap">
     © 2026 王文静 · 南开大学本硕  |
@@ -728,6 +841,17 @@
     els.forEach(function(e){ io.observe(e); });
     // 兜底：若观察器未触发（如预览面板不滚动），2.5s 后强制全部显示，避免内容被永久隐藏
     setTimeout(function(){ els.forEach(function(e){ e.classList.add('in'); }); }, 2500);
+   })();
+  </script>
+  <script>
+   (function(){
+    var el = document.createElement('div');el.className='toast';el.textContent='正在完善内容中';document.body.appendChild(el);
+    var timer = null;
+    function show(){ clearTimeout(timer); el.classList.add('show'); timer = setTimeout(function(){ el.classList.remove('show'); }, 2000); }
+    document.addEventListener('click',function(e){
+      var btn = e.target.closest('a.skill-btn[href="#"]');
+      if(btn){ e.preventDefault(); show(); }
+    });
    })();
   </script>
  </body>
