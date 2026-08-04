@@ -72,6 +72,22 @@
   @media(max-width:560px){.dl-btn{width:100%;justify-content:center}}
   .hero-info{flex:1 1 360px;min-width:280px}
   .hero-info h1{font-size:40px;line-height:1.2;letter-spacing:1px}
+  .name-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .about-btn{
+    display:inline-flex;align-items:center;gap:4px;
+    padding:5px 14px;font-size:13px;font-weight:500;
+    color:var(--accent);background:var(--bg);
+    border:1px solid var(--line);border-radius:999px;
+    cursor:pointer;font-family:inherit;
+    transition:color .2s,background .2s,border-color .2s,transform .2s;
+  }
+  .about-btn:hover{
+    color:#fff;background:var(--accent);border-color:var(--accent);
+    transform:translateY(-1px);
+  }
+  .info-about{display:none;margin-top:18px}
+  .hero-info:has(.about-btn:hover) .info-default{display:none}
+  .hero-info:has(.about-btn:hover) .info-about{display:block}
   .hero-info .role{margin-top:10px;font-size:17px;color:var(--ink-2)}
   .hero-info .role b{color:var(--accent);font-weight:600}
   .tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
@@ -289,23 +305,34 @@
   <div class="wrap hero-grid">
     <img class="avatar" src="photo.jpg" alt="王文静">
     <div class="hero-info">
-      <h1>王文静</h1>
-      <p class="role"><b>AI 产品实习生</b> · 南开大学本硕</p>
-      <div class="tags">
-        <span class="tag">AI 产品</span>
-        <span class="tag">用户增长</span>
-        <span class="tag">Agent / 工作流 / Skills</span>
-        <span class="tag">vibe coding</span>
+      <div class="name-row">
+        <h1>王文静</h1>
+        <button class="about-btn" type="button">关于我</button>
       </div>
-      <div class="contact">
-        <a href="tel:+8615235674907">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          (+86) 152-3567-4907
-        </a>
-        <a href="mailto:2450906146@qq.com">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
-          2450906146@qq.com
-        </a>
+      <div class="info-default">
+        <p class="role"><b>AI 产品实习生</b> · 南开大学本硕</p>
+        <div class="tags">
+          <span class="tag">AI 产品</span>
+          <span class="tag">用户增长</span>
+          <span class="tag">Agent / 工作流 / Skills</span>
+          <span class="tag">vibe coding</span>
+        </div>
+        <div class="contact">
+          <a href="tel:+8615235674907">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            (+86) 152-3567-4907
+          </a>
+          <a href="mailto:2450906146@qq.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+            2450906146@qq.com
+          </a>
+        </div>
+      </div>
+      <div class="info-about">
+        <p style="font-size:15px;color:var(--ink-2);max-width:760px;margin:0">
+          南开大学本硕，专注于 <b style="color:var(--ink)">AI 产品</b> 方向。具备从 0 到 1 的 AI 功能策划、竞品评测、用增活动设计与 Agent 工作流搭建经验，
+          实习覆盖腾讯、小红书、好未来、百度等一线互联网团队。擅长用数据驱动决策，并以 AI 工具链为杠杆提升产品与自身效率。
+        </p>
       </div>
     </div>
     <div class="hero-action">
@@ -316,20 +343,6 @@
     </div>
   </div>
 </header>
-
-<section id="about">
-  <div class="wrap reveal">
-    <div class="sec-head">
-      <span class="bar"></span>
-      <h2>关于我</h2>
-      <span class="en">About</span>
-    </div>
-    <p style="font-size:15px;color:var(--ink-2);max-width:760px">
-      南开大学本硕，专注于 <b style="color:var(--ink)">AI 产品</b> 方向。具备从 0 到 1 的 AI 功能策划、竞品评测、用增活动设计与 Agent 工作流搭建经验，
-      实习覆盖腾讯、小红书、好未来、百度等一线互联网团队。擅长用数据驱动决策，并以 AI 工具链为杠杆提升产品与自身效率。
-    </p>
-  </div>
-</section>
 
 <section class="quick-nav">
   <div class="wrap reveal">
