@@ -182,14 +182,14 @@
   section.quick-nav{background:#fff;padding:0 0 48px}
   .qn-grid{
     display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;
-    height:210px;overflow:hidden;
+    height:180px;overflow:hidden;
     transition:grid-template-columns .45s ease,gap .45s ease;
   }
   .qn-card{
     background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);
     cursor:pointer;color:inherit;text-decoration:none;overflow:hidden;min-width:0;
     display:flex;flex-direction:column;justify-content:center;align-items:center;
-    padding:24px 28px;
+    padding:20px 28px;
     transition:border-color .35s,padding .35s,background .35s,box-shadow .35s;
   }
   /* hover：目标 1fr 展开，其余两列 64px 缩起（保留可见） */
@@ -199,14 +199,14 @@
   /* 展开卡片：左对齐 + 靛蓝高亮 + 详情浮现 */
   .qn-card:hover{
     justify-content:flex-start;align-items:flex-start;
-    padding:28px 32px;
+    padding:22px 28px;
     border-color:var(--accent);border-left:4px solid var(--accent);
     box-shadow:var(--shadow-hover);
   }
   .qn-grid:has(.qn-card:nth-child(1):hover) .qn-card:nth-child(1) .qn-detail,
   .qn-grid:has(.qn-card:nth-child(2):hover) .qn-card:nth-child(2) .qn-detail,
   .qn-grid:has(.qn-card:nth-child(3):hover) .qn-card:nth-child(3) .qn-detail{
-    max-height:280px;opacity:1;margin-top:20px;
+    max-height:260px;opacity:1;margin-top:16px;
   }
   /* 缩起卡片：浅灰底 + 仅 icon 居中 */
   .qn-grid:has(.qn-card:hover) .qn-card:not(:hover){
