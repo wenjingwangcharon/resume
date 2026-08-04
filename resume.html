@@ -183,14 +183,14 @@
   .qn-grid{
     display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;
     height:180px;overflow:hidden;
-    transition:grid-template-columns .45s ease,gap .45s ease;
+    transition:grid-template-columns .4s cubic-bezier(0.4,0,0.2,1),gap .4s cubic-bezier(0.4,0,0.2,1);
   }
   .qn-card{
     background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);
     cursor:pointer;color:inherit;text-decoration:none;overflow:hidden;min-width:0;
     display:flex;flex-direction:column;justify-content:center;align-items:center;
     padding:20px 28px;
-    transition:border-color .35s,padding .35s,background .35s,box-shadow .35s;
+    transition:all .4s cubic-bezier(0.4,0,0.2,1);
   }
   /* hover：目标 1fr 展开，其余两列 64px 缩起（保留可见） */
   .qn-grid:has(.qn-card:nth-child(1):hover){grid-template-columns:1fr 64px 64px;gap:12px}
@@ -206,7 +206,7 @@
   .qn-grid:has(.qn-card:nth-child(1):hover) .qn-card:nth-child(1) .qn-detail,
   .qn-grid:has(.qn-card:nth-child(2):hover) .qn-card:nth-child(2) .qn-detail,
   .qn-grid:has(.qn-card:nth-child(3):hover) .qn-card:nth-child(3) .qn-detail{
-    max-height:260px;opacity:1;margin-top:12px;
+    max-height:260px;opacity:1;margin-top:12px;transform:translateY(0);
   }
   /* 缩起卡片：浅灰底 + 仅 icon 居中 */
   .qn-grid:has(.qn-card:hover) .qn-card:not(:hover){
@@ -215,21 +215,22 @@
   .qn-grid:has(.qn-card:hover) .qn-card:not(:hover) .qn-head{gap:0}
   .qn-grid:has(.qn-card:hover) .qn-card:not(:hover) .qn-title{
     max-width:0;width:0;opacity:0;overflow:hidden;padding:0;margin:0;
+    transition:max-width .4s ease-out,opacity .3s ease-out,width .4s ease-out;
   }
   /* 头部：水平 flex，正常态居中，展开态左对齐 */
   .qn-card .qn-head{
     display:flex;align-items:center;justify-content:center;gap:12px;
     width:100%;
-    transition:justify-content .35s,gap .35s;
+    transition:gap .4s cubic-bezier(0.4,0,0.2,1);
   }
   .qn-card:hover .qn-head{justify-content:flex-start;gap:10px}
   /* icon：正常 36px，展开 26px */
-  .qn-card .qn-icon{font-size:36px;line-height:1;transition:font-size .35s}
+  .qn-card .qn-icon{font-size:36px;line-height:1;transition:font-size .4s cubic-bezier(0.4,0,0.2,1)}
   .qn-card:hover .qn-icon{font-size:26px}
   /* 标题：正常态靛蓝突出，展开态恢复深色 */
   .qn-card .qn-title{
     font-size:20px;font-weight:700;color:var(--accent);white-space:nowrap;
-    transition:font-size .35s,color .35s;
+    transition:font-size .4s ease-out,color .35s ease-out;
   }
   .qn-card:hover .qn-title{font-size:20px;color:var(--ink)}
   /* 详情：默认隐藏，展开态放大 */
@@ -237,7 +238,8 @@
     width:100%;
     font-size:15px;color:var(--ink-2);line-height:1.7;
     max-height:0;opacity:0;overflow:hidden;
-    transition:max-height .4s ease,opacity .3s ease,margin .35s;
+    transform:translateY(8px);
+    transition:max-height .45s cubic-bezier(0.4,0,0.2,1),opacity .35s ease-out,margin .4s cubic-bezier(0.4,0,0.2,1),transform .4s cubic-bezier(0.4,0,0.2,1);
     margin-top:0;
   }
   .qn-card .qn-detail .qn-line{display:block;position:relative;padding-left:16px}
@@ -251,7 +253,7 @@
     .qn-grid{height:auto;grid-template-columns:1fr;gap:12px}
     .qn-grid:has(.qn-card:hover){grid-template-columns:1fr;gap:12px}
     .qn-card{justify-content:flex-start;align-items:flex-start;padding:24px}
-    .qn-card .qn-detail{max-height:1000px;opacity:1;margin-top:14px}
+    .qn-card .qn-detail{max-height:1000px;opacity:1;margin-top:14px;transform:translateY(0)}
     .qn-grid:has(.qn-card:hover) .qn-card:not(:hover) .qn-title{max-width:none;width:auto;opacity:1}
     .qn-grid:has(.qn-card:hover) .qn-card:not(:hover) .qn-head{gap:12px}
   }
