@@ -180,17 +180,32 @@
 
   /* ---------- 快速导览 ---------- */
   section.quick-nav{background:#fff;padding:0 0 48px}
-  .qn-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
-  .qn-card{
-    background:var(--bg); border:1px solid var(--line); border-radius:var(--radius);
-    padding:20px 22px; cursor:pointer; transition:all .2s; text-align:left; display:block; color:inherit; text-decoration:none;
+  .qn-grid{
+    display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;
+    height:210px;overflow:hidden;
+    transition:grid-template-columns .45s ease,gap .45s ease;
   }
-  .qn-card:hover{border-color:var(--accent);border-left:3px solid var(--accent);box-shadow:var(--shadow-hover);transform:translateY(-2px)}
-  .qn-card .qn-head{display:flex;align-items:center;gap:8px;margin-bottom:12px}
-  .qn-card .qn-icon{font-size:20px;line-height:1}
+  .qn-card{
+    background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px 22px;cursor:pointer;text-align:left;display:block;color:inherit;text-decoration:none;
+    overflow:hidden;min-width:0;
+    transition:border-color .35s;
+  }
+  /* hover 展开：目标列 1fr，其余两列 0fr，gap 归零 */
+  .qn-grid:has(.qn-card:nth-child(1):hover){grid-template-columns:1fr 0fr 0fr;gap:0}
+  .qn-grid:has(.qn-card:nth-child(2):hover){grid-template-columns:0fr 1fr 0fr;gap:0}
+  .qn-grid:has(.qn-card:nth-child(3):hover){grid-template-columns:0fr 0fr 1fr;gap:0}
+  /* 展开卡片的靛蓝左边框高亮 */
+  .qn-grid:has(.qn-card:nth-child(1):hover) .qn-card:nth-child(1),
+  .qn-grid:has(.qn-card:nth-child(2):hover) .qn-card:nth-child(2),
+  .qn-grid:has(.qn-card:nth-child(3):hover) .qn-card:nth-child(3){
+    border-color:var(--accent);border-left:4px solid var(--accent);
+  }
+  .qn-card .qn-head{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+  .qn-card .qn-icon{font-size:22px;line-height:1}
   .qn-card .qn-title{font-size:16px;font-weight:700}
-  .qn-card .qn-detail{font-size:13px;color:var(--ink-2);line-height:1.8}
-  @media(max-width:640px){.qn-grid{grid-template-columns:1fr}}
+  .qn-card .qn-detail{font-size:13px;color:var(--ink-2);line-height:1.9}
+  @media(max-width:640px){.qn-grid{grid-template-columns:1fr;height:auto}.qn-grid:has(.qn-card:hover){grid-template-columns:1fr}}
 
   /* ---------- Footer ---------- */
   footer{padding:46px 0;text-align:center;color:var(--ink-3);font-size:13px;border-top:1px solid var(--line)}
