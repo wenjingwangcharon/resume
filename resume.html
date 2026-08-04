@@ -226,7 +226,7 @@
   /* 展开卡片：左对齐 + 靛蓝高亮 + 详情浮现 */
   .qn-card:hover{
     justify-content:flex-start;align-items:flex-start;
-    padding:18px 28px;
+    padding:16px 28px;
     border-color:var(--accent);border-left:4px solid var(--accent);
     box-shadow:var(--shadow-hover);
   }
@@ -282,6 +282,11 @@
     background:var(--accent);
   }
   .qn-card .qn-detail b{color:var(--ink);font-weight:600}
+  .qn-detail.qn-split{display:flex;gap:16px;line-height:1.4}
+  .qn-detail.qn-split .qn-col{flex:1;display:flex;flex-direction:column;gap:6px;min-width:0}
+  .qn-detail.qn-split .qn-item{display:flex;flex-direction:column;gap:2px}
+  .qn-detail.qn-split .qn-item b{font-size:14px}
+  .qn-detail.qn-split .qn-item span{font-size:13px;color:var(--ink-2)}
   @media(max-width:640px){
     .qn-grid{height:auto;grid-template-columns:1fr;gap:12px}
     .qn-grid:has(.qn-card:hover){grid-template-columns:1fr;gap:12px}
@@ -373,11 +378,15 @@
       </a>
       <a class="qn-card" href="#exp">
         <div class="qn-head"><span class="qn-icon-wrap"><span class="qn-icon">💼</span></span><span class="qn-title">实习经历</span></div>
-        <div class="qn-detail">
-          <span class="qn-line"><b>腾讯</b> ima 产品组 · AI 产品实习生（用增）</span>
-          <span class="qn-line"><b>小红书</b> share&amp;connect 产品组 · AI 产品实习生</span>
-          <span class="qn-line"><b>好未来</b> 互联网产研组 · AI 产品实习生</span>
-          <span class="qn-line"><b>百度</b> 搜索与信息分发战略组 · AI 战略分析实习生</span>
+        <div class="qn-detail qn-split">
+          <div class="qn-col">
+            <div class="qn-item"><b>腾讯</b><span>ima 产品组 · AI 产品实习生（用增）</span></div>
+            <div class="qn-item"><b>小红书</b><span>share&amp;connect 产品组 · AI 产品实习生</span></div>
+          </div>
+          <div class="qn-col">
+            <div class="qn-item"><b>好未来</b><span>互联网产研组 · AI 产品实习生</span></div>
+            <div class="qn-item"><b>百度</b><span>搜索与信息分发战略组 · AI 战略分析实习生</span></div>
+          </div>
         </div>
       </a>
       <a class="qn-card" href="#proj">
