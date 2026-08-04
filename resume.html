@@ -193,9 +193,9 @@
     transition:all .4s cubic-bezier(0.4,0,0.2,1);
   }
   /* hover：目标 1fr 展开，其余两列 100px 缩起 */
-  .qn-grid:has(.qn-card:nth-child(1):hover){grid-template-columns:1fr 100px 100px;gap:12px}
-  .qn-grid:has(.qn-card:nth-child(2):hover){grid-template-columns:100px 1fr 100px;gap:12px}
-  .qn-grid:has(.qn-card:nth-child(3):hover){grid-template-columns:100px 100px 1fr;gap:12px}
+  .qn-grid:has(.qn-card:nth-child(1):hover){grid-template-columns:7fr 1fr 1fr;gap:12px}
+  .qn-grid:has(.qn-card:nth-child(2):hover){grid-template-columns:1fr 7fr 1fr;gap:12px}
+  .qn-grid:has(.qn-card:nth-child(3):hover){grid-template-columns:1fr 1fr 7fr;gap:12px}
   /* 展开卡片：左对齐 + 靛蓝高亮 + 详情浮现 */
   .qn-card:hover{
     justify-content:flex-start;align-items:flex-start;
