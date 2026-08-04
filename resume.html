@@ -182,7 +182,7 @@
   section.quick-nav{background:#fff;padding:0 0 48px}
   .qn-grid{
     display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;
-    height:180px;overflow:hidden;
+    height:220px;overflow:hidden;
     transition:grid-template-columns .45s ease,gap .45s ease;
   }
   .qn-card{
@@ -235,7 +235,7 @@
   /* 详情：默认隐藏，展开态放大 */
   .qn-card .qn-detail{
     width:100%;
-    font-size:15px;color:var(--ink-2);line-height:2.1;
+    font-size:15px;color:var(--ink-2);line-height:1.95;
     max-height:0;opacity:0;overflow:hidden;
     transition:max-height .4s ease,opacity .3s ease,margin .35s;
     margin-top:0;
@@ -244,18 +244,8 @@
   .qn-card .qn-detail .qn-line::before{
     content:'';position:absolute;left:0;top:.7em;
     width:6px;height:6px;border-radius:50%;
+    background:var(--accent);
   }
-  /* 彩色圆点：每卡独立 nth-child 配色（蓝/橙/青/紫） */
-  .qn-card:nth-child(1) .qn-line:nth-child(1)::before{background:var(--accent)}
-  .qn-card:nth-child(1) .qn-line:nth-child(2)::before{background:#ED7D31}
-  .qn-card:nth-child(2) .qn-line:nth-child(1)::before{background:var(--accent)}
-  .qn-card:nth-child(2) .qn-line:nth-child(2)::before{background:#ED7D31}
-  .qn-card:nth-child(2) .qn-line:nth-child(3)::before{background:#2CA089}
-  .qn-card:nth-child(2) .qn-line:nth-child(4)::before{background:#8B5CF6}
-  .qn-card:nth-child(3) .qn-line:nth-child(1)::before{background:var(--accent)}
-  .qn-card:nth-child(3) .qn-line:nth-child(2)::before{background:#ED7D31}
-  .qn-card:nth-child(3) .qn-line:nth-child(3)::before{background:#2CA089}
-  .qn-card:nth-child(3) .qn-line:nth-child(4)::before{background:#8B5CF6}
   .qn-card .qn-detail b{color:var(--ink);font-weight:600}
   @media(max-width:640px){
     .qn-grid{height:auto;grid-template-columns:1fr;gap:12px}
