@@ -179,19 +179,17 @@
   .chip:hover{border-color:var(--accent);color:var(--accent)}
 
   /* ---------- 快速导览 ---------- */
-  .quick-nav{padding:0 0 48px}
-  .qn-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:14px}
+  .quick-nav{background:#fff;padding:0 0 48px}
+  .qn-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
   .qn-card{
     background:var(--bg); border:1px solid var(--line); border-radius:var(--radius);
     padding:20px 22px; cursor:pointer; transition:all .2s; text-align:left; display:block; color:inherit; text-decoration:none;
   }
-  .qn-card:hover{border-color:var(--accent);box-shadow:var(--shadow-hover);transform:translateY(-2px)}
-  .qn-card .qn-icon{font-size:24px;margin-bottom:8px}
-  .qn-card .qn-title{font-size:16px;font-weight:700;margin-bottom:4px}
-  .qn-card .qn-desc{font-size:13px;color:var(--ink-2);line-height:1.5}
-  .qn-pills{display:flex;justify-content:center;gap:24px}
-  .qn-pill{font-size:13px;color:var(--ink-3);cursor:pointer;transition:color .2s;text-decoration:none}
-  .qn-pill:hover{color:var(--accent)}
+  .qn-card:hover{border-color:var(--accent);border-left:3px solid var(--accent);box-shadow:var(--shadow-hover);transform:translateY(-2px)}
+  .qn-card .qn-head{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+  .qn-card .qn-icon{font-size:20px;line-height:1}
+  .qn-card .qn-title{font-size:16px;font-weight:700}
+  .qn-card .qn-detail{font-size:13px;color:var(--ink-2);line-height:1.8}
   @media(max-width:640px){.qn-grid{grid-template-columns:1fr}}
 
   /* ---------- Footer ---------- */
@@ -271,25 +269,30 @@
   <div class="wrap reveal">
     <div class="qn-grid">
       <a class="qn-card" href="#edu">
-        <div class="qn-icon">🎓</div>
-        <div class="qn-title">教育背景</div>
-        <div class="qn-desc">南开大学本硕 · 经济学</div>
+        <div class="qn-head"><span class="qn-icon">🎓</span><span class="qn-title">教育背景</span></div>
+        <div class="qn-detail">
+          硕士 · 南开大学 · 产业经济学<br>
+          学士 · 南开大学 · 管理学
+        </div>
       </a>
       <a class="qn-card" href="#exp">
-        <div class="qn-icon">💼</div>
-        <div class="qn-title">实习经历</div>
-        <div class="qn-desc">腾讯 · 小红书 · 好未来 · 百度</div>
+        <div class="qn-head"><span class="qn-icon">💼</span><span class="qn-title">实习经历</span></div>
+        <div class="qn-detail">
+          腾讯 ima 产品组 · AI 产品实习生（用增）<br>
+          小红书 share&amp;connect 产品组 · AI 产品实习生<br>
+          好未来 互联网产研组 · AI 产品实习生<br>
+          百度 搜索与信息分发战略组 · AI 战略分析实习生
+        </div>
       </a>
       <a class="qn-card" href="#proj">
-        <div class="qn-icon">🚀</div>
-        <div class="qn-title">项目经历</div>
-        <div class="qn-desc">4 个 AI 产品项目</div>
+        <div class="qn-head"><span class="qn-icon">🚀</span><span class="qn-title">项目经历</span></div>
+        <div class="qn-detail">
+          OfferBuddy — AI 求职助手<br>
+          Daily AI-News — 自动更新的定制 AI 新闻网页<br>
+          作文 COACH — 高中生作文 AI 素材工具<br>
+          OLIST 电商数据分析报告
+        </div>
       </a>
-    </div>
-    <div class="qn-pills">
-      <a class="qn-pill" href="#comp">竞赛经历</a>
-      <a class="qn-pill" href="#skills">技能</a>
-      <a class="qn-pill" href="#awards">荣誉</a>
     </div>
   </div>
 </section>
