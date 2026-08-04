@@ -87,9 +87,9 @@
   .about-btn:hover{
     color:#fff;background:var(--accent);border-color:var(--accent);
   }
-  .info-about{display:none}
-  .hero-info:has(.about-btn:hover) .info-default{display:none}
-  .hero-info:has(.about-btn:hover) .info-about{display:block}
+  .info-about{opacity:0;pointer-events:none}
+  .hero-info:has(.about-btn:hover) .info-default{opacity:0;pointer-events:none}
+  .hero-info:has(.about-btn:hover) .info-about{opacity:1;pointer-events:auto}
   .hero-info .role{margin-top:10px;font-size:17px;color:var(--ink-2)}
   .hero-info .role b{color:var(--accent);font-weight:600}
   .tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
