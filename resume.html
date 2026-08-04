@@ -183,7 +183,7 @@
   .qn-grid{
     display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;
     height:180px;overflow:hidden;
-    transition:grid-template-columns .4s cubic-bezier(0.4,0,0.2,1),gap .4s cubic-bezier(0.4,0,0.2,1);
+    transition:grid-template-columns .5s cubic-bezier(0.4,0,0.2,1),gap .5s cubic-bezier(0.4,0,0.2,1);
   }
   .qn-card{
     background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);
@@ -192,10 +192,10 @@
     padding:20px 28px;
     transition:all .4s cubic-bezier(0.4,0,0.2,1);
   }
-  /* hover：目标 1fr 展开，其余两列 64px 缩起（保留可见） */
-  .qn-grid:has(.qn-card:nth-child(1):hover){grid-template-columns:1fr 64px 64px;gap:12px}
-  .qn-grid:has(.qn-card:nth-child(2):hover){grid-template-columns:64px 1fr 64px;gap:12px}
-  .qn-grid:has(.qn-card:nth-child(3):hover){grid-template-columns:64px 64px 1fr;gap:12px}
+  /* hover：目标 1fr 展开，其余两列 100px 缩起 */
+  .qn-grid:has(.qn-card:nth-child(1):hover){grid-template-columns:1fr 100px 100px;gap:12px}
+  .qn-grid:has(.qn-card:nth-child(2):hover){grid-template-columns:100px 1fr 100px;gap:12px}
+  .qn-grid:has(.qn-card:nth-child(3):hover){grid-template-columns:100px 100px 1fr;gap:12px}
   /* 展开卡片：左对齐 + 靛蓝高亮 + 详情浮现 */
   .qn-card:hover{
     justify-content:flex-start;align-items:flex-start;
