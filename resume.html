@@ -256,10 +256,10 @@
   .qn-card .qn-icon-wrap{
     width:56px;height:56px;display:flex;align-items:center;justify-content:center;
     border-radius:50%;background:rgba(99,102,241,.06);
-    transition:background .4s cubic-bezier(0.4,0,0.2,1),transform .35s ease;
+    transition:width .4s cubic-bezier(0.4,0,0.2,1),height .4s cubic-bezier(0.4,0,0.2,1),background .4s cubic-bezier(0.4,0,0.2,1),transform .35s ease;
   }
-  .qn-card:hover .qn-icon-wrap{background:rgba(99,102,241,.12);transform:scale(1.05)}
-  .qn-card:hover .qn-icon{font-size:26px}
+  .qn-card:hover .qn-icon-wrap{width:32px;height:32px;background:rgba(99,102,241,.12);transform:scale(1.05)}
+  .qn-card:hover .qn-icon{font-size:18px}
   /* 标题：正常态靛蓝突出，展开态恢复深色 */
   .qn-card .qn-title{
     font-size:20px;font-weight:700;color:var(--accent);white-space:nowrap;
