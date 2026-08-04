@@ -70,7 +70,7 @@
   .dl-btn:hover{transform:translateY(-3px);box-shadow:0 18px 36px rgba(99,102,241,.42)}
   .dl-btn svg{width:22px;height:22px}
   @media(max-width:560px){.dl-btn{width:100%;justify-content:center}}
-  .hero-info{flex:1 1 360px;min-width:280px;display:grid;grid-template-columns:1fr;align-items:start;row-gap:18px}
+  .hero-info{flex:1 1 360px;min-width:280px;display:grid;grid-template-columns:1fr;align-items:start;row-gap:24px}
   .hero-info .name-row{grid-row:1}
   .hero-info .info-default,
   .hero-info .info-about{grid-row:2;grid-column:1}
@@ -207,8 +207,18 @@
     background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);
     cursor:pointer;color:inherit;text-decoration:none;overflow:hidden;min-width:0;
     display:flex;flex-direction:column;justify-content:center;align-items:center;
-    padding:20px 28px;
+    padding:20px 28px;position:relative;
     transition:all .4s cubic-bezier(0.4,0,0.2,1);
+  }
+  .qn-card::before{
+    content:'';position:absolute;top:0;left:16%;width:68%;height:3px;
+    border-radius:0 0 3px 3px;
+    background:linear-gradient(90deg,transparent,var(--accent),transparent);
+    transition:.4s cubic-bezier(0.4,0,0.2,1);
+  }
+  .qn-card:hover::before{
+    left:0;width:100%;border-radius:0;
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));
   }
   /* hover：目标 1fr 展开，其余两列 100px 缩起 */
   .qn-grid:has(.qn-card:nth-child(1):hover){grid-template-columns:7fr 1fr 1fr;gap:12px}
@@ -244,6 +254,12 @@
   .qn-card:hover .qn-head{justify-content:flex-start;gap:10px}
   /* icon：正常 36px，展开 26px */
   .qn-card .qn-icon{font-size:36px;line-height:1;transition:font-size .4s cubic-bezier(0.4,0,0.2,1)}
+  .qn-card .qn-icon-wrap{
+    width:56px;height:56px;display:flex;align-items:center;justify-content:center;
+    border-radius:50%;background:rgba(99,102,241,.06);
+    transition:background .4s cubic-bezier(0.4,0,0.2,1),transform .35s ease;
+  }
+  .qn-card:hover .qn-icon-wrap{background:rgba(99,102,241,.12);transform:scale(1.05)}
   .qn-card:hover .qn-icon{font-size:26px}
   /* 标题：正常态靛蓝突出，展开态恢复深色 */
   .qn-card .qn-title{
@@ -350,14 +366,14 @@
   <div class="wrap reveal">
     <div class="qn-grid">
       <a class="qn-card" href="#edu">
-        <div class="qn-head"><span class="qn-icon">🎓</span><span class="qn-title">教育背景</span></div>
+        <div class="qn-head"><span class="qn-icon-wrap"><span class="qn-icon">🎓</span></span><span class="qn-title">教育背景</span></div>
         <div class="qn-detail">
           <span class="qn-line"><b>硕士</b> · 南开大学 · 产业经济学</span>
           <span class="qn-line"><b>学士</b> · 南开大学 · 管理学</span>
         </div>
       </a>
       <a class="qn-card" href="#exp">
-        <div class="qn-head"><span class="qn-icon">💼</span><span class="qn-title">实习经历</span></div>
+        <div class="qn-head"><span class="qn-icon-wrap"><span class="qn-icon">💼</span></span><span class="qn-title">实习经历</span></div>
         <div class="qn-detail">
           <span class="qn-line"><b>腾讯</b> ima 产品组 · AI 产品实习生（用增）</span>
           <span class="qn-line"><b>小红书</b> share&amp;connect 产品组 · AI 产品实习生</span>
@@ -366,7 +382,7 @@
         </div>
       </a>
       <a class="qn-card" href="#proj">
-        <div class="qn-head"><span class="qn-icon">🚀</span><span class="qn-title">项目经历</span></div>
+        <div class="qn-head"><span class="qn-icon-wrap"><span class="qn-icon">🚀</span></span><span class="qn-title">项目经历</span></div>
         <div class="qn-detail">
           <span class="qn-line"><b>OfferBuddy</b> — AI 求职助手</span>
           <span class="qn-line"><b>Daily AI-News</b> — 自动更新的定制 AI 新闻网页</span>
