@@ -240,6 +240,23 @@
     transition:max-height .4s ease,opacity .3s ease,margin .35s;
     margin-top:0;
   }
+  .qn-card .qn-detail .qn-line{display:block;position:relative;padding-left:16px}
+  .qn-card .qn-detail .qn-line::before{
+    content:'';position:absolute;left:0;top:.7em;
+    width:6px;height:6px;border-radius:50%;
+  }
+  /* 彩色圆点：每卡独立 nth-child 配色（蓝/橙/青/紫） */
+  .qn-card:nth-child(1) .qn-line:nth-child(1)::before{background:var(--accent)}
+  .qn-card:nth-child(1) .qn-line:nth-child(2)::before{background:#ED7D31}
+  .qn-card:nth-child(2) .qn-line:nth-child(1)::before{background:var(--accent)}
+  .qn-card:nth-child(2) .qn-line:nth-child(2)::before{background:#ED7D31}
+  .qn-card:nth-child(2) .qn-line:nth-child(3)::before{background:#2CA089}
+  .qn-card:nth-child(2) .qn-line:nth-child(4)::before{background:#8B5CF6}
+  .qn-card:nth-child(3) .qn-line:nth-child(1)::before{background:var(--accent)}
+  .qn-card:nth-child(3) .qn-line:nth-child(2)::before{background:#ED7D31}
+  .qn-card:nth-child(3) .qn-line:nth-child(3)::before{background:#2CA089}
+  .qn-card:nth-child(3) .qn-line:nth-child(4)::before{background:#8B5CF6}
+  .qn-card .qn-detail b{color:var(--ink);font-weight:600}
   @media(max-width:640px){
     .qn-grid{height:auto;grid-template-columns:1fr;gap:12px}
     .qn-grid:has(.qn-card:hover){grid-template-columns:1fr;gap:12px}
@@ -328,26 +345,26 @@
       <a class="qn-card" href="#edu">
         <div class="qn-head"><span class="qn-icon">🎓</span><span class="qn-title">教育背景</span></div>
         <div class="qn-detail">
-          硕士 · 南开大学 · 产业经济学<br>
-          学士 · 南开大学 · 管理学
+          <span class="qn-line"><b>硕士</b> · 南开大学 · 产业经济学</span>
+          <span class="qn-line"><b>学士</b> · 南开大学 · 管理学</span>
         </div>
       </a>
       <a class="qn-card" href="#exp">
         <div class="qn-head"><span class="qn-icon">💼</span><span class="qn-title">实习经历</span></div>
         <div class="qn-detail">
-          腾讯 ima 产品组 · AI 产品实习生（用增）<br>
-          小红书 share&amp;connect 产品组 · AI 产品实习生<br>
-          好未来 互联网产研组 · AI 产品实习生<br>
-          百度 搜索与信息分发战略组 · AI 战略分析实习生
+          <span class="qn-line"><b>腾讯</b> ima 产品组 · AI 产品实习生（用增）</span>
+          <span class="qn-line"><b>小红书</b> share&amp;connect 产品组 · AI 产品实习生</span>
+          <span class="qn-line"><b>好未来</b> 互联网产研组 · AI 产品实习生</span>
+          <span class="qn-line"><b>百度</b> 搜索与信息分发战略组 · AI 战略分析实习生</span>
         </div>
       </a>
       <a class="qn-card" href="#proj">
         <div class="qn-head"><span class="qn-icon">🚀</span><span class="qn-title">项目经历</span></div>
         <div class="qn-detail">
-          OfferBuddy — AI 求职助手<br>
-          Daily AI-News — 自动更新的定制 AI 新闻网页<br>
-          作文 COACH — 高中生作文 AI 素材工具<br>
-          OLIST 电商数据分析报告
+          <span class="qn-line"><b>OfferBuddy</b> — AI 求职助手</span>
+          <span class="qn-line"><b>Daily AI-News</b> — 自动更新的定制 AI 新闻网页</span>
+          <span class="qn-line"><b>作文 COACH</b> — 高中生作文 AI 素材工具</span>
+          <span class="qn-line"><b>OLIST</b> 电商数据分析报告</span>
         </div>
       </a>
     </div>
